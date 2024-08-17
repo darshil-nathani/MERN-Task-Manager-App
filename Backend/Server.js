@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 // const cors = require('cors');
 const dbConfig = require('./config/db.config');
 const tasksRoute = require('./routes/tasks.route');
+const userRoute = require('./routes/user.route');
 
 const app = express();
 app.use(express.json());
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
     res.json({ message: "API is Live!" });
   });
   
+  app.use("/auth", userRoute);
   app.use("/task", tasksRoute);
   
   app.listen(portNo, () => {
