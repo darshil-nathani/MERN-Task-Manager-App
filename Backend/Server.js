@@ -1,12 +1,21 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// const cors = require('cors');
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const dbConfig = require('./config/db.config');
 const tasksRoute = require('./routes/tasks.route');
 const userRoute = require('./routes/user.route');
 
+const corsOptions = {
+  origin: true,
+  credentials: true,
+};
+
 const app = express();
 app.use(express.json());
+app.use(cors(corsOptions));
+app.use(cookieParser());
+
 
 const { connectionString, portNo } = dbConfig;
 
