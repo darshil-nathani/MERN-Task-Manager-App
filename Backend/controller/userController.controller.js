@@ -70,5 +70,6 @@ const logout = async (req, res) => {
     })
     .json({ message: "User logged out successfully!" });
 };
+//
 
 module.exports = { register, login, verifyJwt, logout };
